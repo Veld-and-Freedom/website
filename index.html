@@ -64,4 +64,465 @@
       gap: 0.8rem;
     }
     nav.scrolled .nav-logo { color: var(--brown); }
-    .nav-links { display: flex; gap: 2.5rem; list-style:
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--tan) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(30,15,5,0.55) 0%, rgba(62,37,16,0.3) 50%, rgba(107,125,82,0.25) 100%),
+        url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1800&q=80&fit=crop') center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.0); }
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 1.2s 0.4s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1.4rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.8rem;
+    }
+    .hero-title em { font-style: italic; color: var(--tan); }
+    .hero-sub {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.75);
+      max-width: 420px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 0.9rem 2.6rem;
+      border: 1px solid rgba(196,168,130,0.7);
+      color: var(--tan);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    .hero-cta:hover {
+      background: var(--tan);
+      color: var(--brown);
+      border-color: var(--tan);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s 1.4s ease forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(196,168,130,0.8), transparent);
+      animation: scrollPulse 2s 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--brown);
+      margin-bottom: 1.8rem;
+    }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-body {
+      font-size: 0.95rem;
+      line-height: 1.95;
+      color: var(--muted);
+      max-width: 560px;
+    }
+    .section-body p + p { margin-top: 1.2rem; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--brown);
+      padding: 4rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+    .strip-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      letter-spacing: 0.03em;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .strip-text strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--tan);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      padding: 7rem 6rem;
+    }
+    .about-image-wrap { position: relative; }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: -2rem; left: -2rem;
+      right: 2rem; bottom: 2rem;
+      border: 1px solid var(--tan);
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: sepia(12%) saturate(0.9);
+    }
+    .about-content { position: relative; }
+
+    /* ── VALUES ── */
+    #values {
+      background: var(--cream-dark);
+      text-align: center;
+    }
+    .values-header { margin-bottom: 4rem; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .value-card {
+      background: var(--white);
+      padding: 3rem 2.4rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .value-card:hover { transform: translateY(-4px); }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--tan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .value-card:hover::before { transform: scaleX(1); }
+    .value-icon { font-size: 1.8rem; margin-bottom: 1.4rem; display: block; }
+    .value-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 0.8rem;
+    }
+    .value-text { font-size: 0.88rem; line-height: 1.85; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--brown);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      padding: 7rem 6rem;
+    }
+    #contact .section-label { color: var(--tan); opacity: 0.7; }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-body { color: rgba(245,239,227,0.6); }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tan);
+      opacity: 0.8;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(196,168,130,0.25);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.9rem 1.1rem;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--tan); background: rgba(255,255,255,0.1); }
+    .form-group textarea { height: 140px; resize: vertical; }
+
+    .btn-submit {
+      padding: 1rem 2.8rem;
+      background: var(--tan);
+      color: var(--brown);
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: var(--cream); color: var(--brown-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 2.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--tan); text-transform: uppercase; letter-spacing: 0.14em; }
+    .footer-copy, .footer-tag { font-size: 0.72rem; color: rgba(196,168,130,0.4); letter-spacing: 0.08em; }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.8rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.8rem; }
+      #about, #contact { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.8rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25 35L48 75L52 75L75 35" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M52 50H70" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M52 35H75" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span>Veld &amp; Freedom</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#values">Our Values</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Sustainably made in South Africa</p>
+      <h1 class="hero-title">Wear<br>the <em>Wild.</em></h1>
+      <p class="hero-sub">Clothing rooted in the raw beauty of the African bush — built to last, made to give back.</p>
+      <a href="#about" class="hero-cta">Discover Our Story</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <p class="strip-text">Clothing that honours the land it was inspired by —<br><strong>made to last, built to give back.</strong></p>
+  </div>
+
+  <section id="about">
+    <div class="about-image-wrap reveal">
+      <img class="about-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=80&fit=crop" alt="African landscape" loading="lazy" />
+    </div>
+    <div class="about-content">
+      <span class="section-label reveal">Our Story</span>
+      <h2 class="section-title reveal reveal-delay-1">Born from<br>the <em>bush.</em></h2>
+      <div class="section-body reveal reveal-delay-2">
+        <p>Veld and Freedom was born from a deep-rooted love for Africa and its untamed spirit. Our family's connection to the African bush spans generations — instilling in us a profound respect for the land and its incredible biodiversity.</p>
+        <p>This brand is our way of sharing that passion. A platform to celebrate the beauty of nature, and to advocate for its conservation.</p>
+        <p>We believe fashion can and should be a force for good. Our focus is on durability and sustainability — high-quality garments built to last, that prove you don't have to choose between style and conscience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="values">
+    <div class="values-header">
+      <span class="section-label reveal">What we stand for</span>
+      <h2 class="section-title reveal reveal-delay-1">A different kind<br>of <em>clothing brand.</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <span class="value-icon">🌍</span>
+        <h3 class="value-heading">Made in South Africa</h3>
+        <p class="value-text">Every garment is locally manufactured — reducing our carbon footprint and supporting South African communities.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <span class="value-icon">♻️</span>
+        <h3 class="value-heading">Truly Recyclable</h3>
+        <p class="value-text">We use pure, single-material fabrics. Our clothing can be fully recycled at the end of its life, leaving no lasting burden on the planet.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <span class="value-icon">🐆</span>
+        <h3 class="value-heading">Conservation First</h3>
+        <p class="value-text">Every component is chosen to ensure nothing we produce causes a lasting negative impact on our natural heritage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div>
+      <span class="section-label reveal">Get in touch</span>
+      <h2 class="section-title reveal reveal-delay-1">We'd love to<br><em>hear from you.</em></h2>
+      <div class="section-body reveal reveal-delay-2">
+        <p>Whether you're curious about our story, want to know more about our upcoming collection, or just want to connect — our inbox is always open.</p>
+        <p style="margin-top:1.2rem; font-size:0.82rem; letter-spacing:0.05em;">
+          <span style="color:var(--tan); opacity:0.7; display:block; margin-bottom:0.4rem;">LOCATION</span>
+          Cape Town, South Africa
+        </p>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <form action="https://formspree.io/f/xkopopvj" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+        <input type="hidden" name="_next" value="https://veldandfreedom.com">
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Veld &amp; Freedom</span>
+    <span class="footer-copy">© 2026 Veld and Freedom. All rights reserved.</span>
+    <span class="footer-tag">Made with care in South Africa 🇿🇦</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
