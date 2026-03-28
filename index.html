@@ -64,44 +64,4 @@
       gap: 0.8rem;
     }
     nav.scrolled .nav-logo { color: var(--brown); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    nav.scrolled .nav-links a { color: var(--muted); }
-    .nav-links a:hover { color: var(--tan) !important; }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(160deg, rgba(30,15,5,0.55) 0%, rgba(62,37,16,0.3) 50%, rgba(107,125,82,0.25) 100%),
-        url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1800&q=80&fit=crop') center/cover no-repeat;
-      transform: scale(1.04);
-      animation: heroZoom 18s ease-out forwards;
-    }
-    @keyframes heroZoom {
-      from { transform: scale(1.04); }
-      to   { transform: scale(1.0); }
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='
+    .nav-links { display: flex; gap: 2.5rem; list-style:
